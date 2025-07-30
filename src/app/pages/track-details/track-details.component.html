@@ -1,0 +1,57 @@
+<ng-container *ngIf="reciter">
+  <header class="details-header">
+    <img [src]="getReciterImage(reciter.id)" alt="Reciter Art" class="header-image">
+    <div class="header-info">
+      <span class="page-type">أغنية</span>
+      <h1 class="page-title">{{ surahName }}</h1>
+      <div class="metadata">
+        <img [src]="getReciterImage(reciter.id)" class="artist-avatar">
+        <a [routerLink]="['/reciter', reciter.id]" class="artist-name">{{ reciter.name }}</a>
+        <span>•</span>
+        <span>سورة {{ surahName }}</span> 
+        <!-- <span>7:08</span> <span>•</span>
+        <span>2025</span> -->
+      </div>
+    </div>
+  </header>
+
+<div class="actions-bar">
+  <button class="play-button" (click)="togglePlayback()">
+    <i class="fa-solid"
+       [class.fa-play]="!(isPlaying$ | async)"
+       [class.fa-pause]="isPlaying$ | async">
+    </i>
+  </button>
+  </div>
+
+  <div class="content-body">
+    <div class="artist-section">
+      <h3>القارئ</h3>
+      <a [routerLink]="['/reciter', reciter.id]" class="artist-card">
+        <img [src]="getReciterImage(reciter.id)" class="artist-avatar-large">
+        <span>{{ reciter.name }}</span>
+      </a>
+    </div>
+    </div>
+</ng-container>
+<div class="content-body" *ngIf="suggestions.length > 0">
+  <section class="suggestions-section">
+    <h2>مقترحة</h2>
+    <!-- <p class="subtitle">بناءً على هذه السوره</p> -->
+
+    <ul class="tracks-list">
+      <li class="track-item" *ngFor="let track of suggestions">
+        <div class="track-col title" >
+          <img [routerLink]="['/reciter',  track.reciterId]" [src]="getReciterImage(track.reciterId)" alt="Reciter Art">
+          <div class="track-info">
+            <a class="track-name" [routerLink]="['/track', track.reciterId, track.surahNumber]">
+              سورة {{ track.surahName }}
+            </a>
+            <div class="artist-name" [routerLink]="['/reciter',  track.reciterId]">{{ track.reciterName }}</div>
+          </div>
+          
+        </div>
+
+    </ul>
+  </section>
+</div>

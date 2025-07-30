@@ -1,0 +1,26 @@
+<header class="header-container">
+  <div class="header-left">
+    <div  class="logo ">
+      <h2>ورتل</h2>
+    </div>
+    <nav class="navigation">
+      <button class="nav-button" 
+          routerLink="/" 
+          routerLinkActive="active" 
+          [routerLinkActiveOptions]="{exact: true}">
+    <i class="fa-solid fa-house"></i>
+    <span>الرئيسية</span>
+  </button>
+    </nav>
+  </div>
+
+  <div class="header-right">
+    <a href="#" class="install-link"   routerLink="/installapp" >
+      <i class="fa-solid fa-circle-down"></i>
+      <span> تثبيت التطبيق</span>
+    </a>
+    <button class="icon-button">
+      <i class="fa-regular fa-bell"></i>
+    </button>
+  </div>
+</header>

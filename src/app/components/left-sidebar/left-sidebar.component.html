@@ -1,0 +1,23 @@
+<div class="sidebar-container">
+<div class="card library-card">
+  <!-- <div class="card-header">
+    <i class="fa-solid fa-book"></i>
+    <span>Your Library</span>
+  </div> -->
+
+  <div class="library-items" *ngIf="(libraryService.likedTracks$ | async) as tracks">
+    <a routerLink="/liked" class="library-item liked-item">
+      <div class="item-icon">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <div class="item-details">
+        <div class="item-title">الإعجابات</div>
+        <div class="item-subtitle">
+          <i class="fa-solid fa-thumbtack pinned-icon"></i>
+          قائمة القراء • {{ tracks.length }} سوره
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+  </div>

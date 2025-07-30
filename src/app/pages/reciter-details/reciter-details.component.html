@@ -1,0 +1,84 @@
+<div class="details-page" *ngIf="reciter$ | async as reciter">
+  <header class="details-header">
+<img [src]="getReciterImage(reciter.id)" alt="Reciter Art" class="reciter-image">
+    <div class="header-info">
+      <span class="page-type">Reciter</span>
+      <h1 class="reciter-name">{{ reciter.name }}</h1>
+      <p class="reciter-rewaya">{{ reciter.rewaya }}</p>
+    </div>
+  </header>
+
+  <div class="tracks-container">
+    <div class="tracks-header">
+      
+      <div class="track-col index"># </div>
+<div class="track-col title">
+  <div class="track-info">
+    السور
+  </div>
+</div>
+  <div class="track-col like"></div> 
+
+    </div>
+
+    <ul class="tracks-list">
+<li class="track-item" *ngFor="let surah of surahList | slice:0:visibleCount; let i = index" 
+        (click)="playSurah(reciter, surah.number)" >
+  <div class="track-col index">
+<div class="now-playing-icon" 
+     *ngIf="(playerService.isPlaying$ | async) && 
+            (playerService.currentTrack$ | async)?.surahNumber === surah.number &&
+            (playerService.currentTrack$ | async)?.reciterId === reciter?.id">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+    
+    <span *ngIf="!((playerService.isPlaying$ | async) && (playerService.currentTrack$ | async)?.surahNumber === surah.number)">
+      {{ i + 1 }}
+    </span>
+  </div>
+  <div class="track-col title">
+<div class="surah-name" 
+     [class.active-track]="(playerService.isPlaying$ | async) && 
+                           (playerService.currentTrack$ | async)?.surahNumber === surah.number &&
+                           (playerService.currentTrack$ | async)?.reciterId === reciter?.id">
+  {{ surah.name }}
+</div>
+  </div>
+  <div class="track-col like">
+    <button class="like-button" (click)="onToggleLike(surah, $event)">
+      <i *ngIf="isLiked(surah)" class="fa-solid fa-heart liked-icon"></i>
+      <i *ngIf="!isLiked(surah)" class="fa-regular fa-heart"></i>
+    </button>
+  </div>
+   
+</li>
+      <button *ngIf="visibleCount < surahList.length" 
+          class="see-more-button" 
+          (click)="showMore()">
+    شاهد المزيد
+  </button>
+    <button *ngIf="visibleCount > initialDisplayCount" 
+          class="see-more-button" 
+          (click)="showLess()">
+   إظهار أقل
+  </button>
+    </ul>
+
+  </div>
+</div>
+<section class="suggestions-section" *ngIf="suggestedReciters.length > 0">
+  <div class="suggestions-header">
+    <h2>المزيد من القراء </h2>
+    <!-- <button class="show-all-button">Show all</button> -->
+  </div>
+
+  <div class="suggestions-grid">
+    <a *ngFor="let suggestion of suggestedReciters" 
+       [routerLink]="['/reciter', suggestion.id]" 
+       class="suggestion-card">
+ <img [src]="getReciterImage(suggestion.id)" alt="Artist photo">      <div class="card-title">{{ suggestion.name }}</div>
+    </a>
+  </div>
+</section>

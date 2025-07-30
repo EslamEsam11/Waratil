@@ -1,0 +1,50 @@
+<div class="liked-songs-page" *ngIf="(libraryService.likedTracks$ | async) as tracks">
+  <header class="details-header">
+    <div class="header-icon">
+      <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="header-info">
+      <h1 class="page-title">الإعجابات</h1>
+    </div>
+  </header>
+
+  <div class="tracks-container">
+    <div class="tracks-header">
+      <div class="track-col index">#</div>
+      <div class="track-col title">المحتوى</div>
+      <div class="track-col album">ألبوم</div>
+      <div class="track-col duration"><i class="fa-regular fa-clock"></i></div>
+    </div>
+
+<ul class="tracks-list">
+  <li class="track-item" *ngFor="let track of tracks; let i = index" (click)="playTrack(track, $event)">
+    <div class="track-col index">{{ i + 1 }}</div>
+<div class="track-col title">
+    <img [src]="getReciterImage(track)" alt="Reciter Art">
+
+  <div class="track-info">
+    
+     <a class="track-name" [routerLink]="['/track', track.reciterId, track.surahNumber]">
+      {{ track.surahName }}
+    </a>
+    <a class="artist-name" [routerLink]="['/reciter', track.reciterId]">{{ track.reciterName }}</a>
+  </div>
+  
+</div>
+    <div class="track-col album">
+      <a [routerLink]="['/reciter', track.reciterId]" (click)="stopPropagation($event)">
+        {{ track.reciterName }}
+      </a>
+    </div>
+    
+     <div class="track-col duration">
+    <button class="delete-button" (click)="removeTrack(track, $event)">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <span class="duration-text">{{ track.duration || '--:--' }}</span>
+  </div>
+
+  </li>
+</ul>
+  </div>
+</div>

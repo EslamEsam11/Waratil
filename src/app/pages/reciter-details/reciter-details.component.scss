@@ -1,0 +1,214 @@
+.details-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 40px;
+}
+.reciter-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+.header-info .reciter-name {
+  font-size: 5rem;
+  font-weight: 900;
+  margin: 10px 0;
+  color: white;
+}
+
+.tracks-container { padding: 24px 40px; }
+.tracks-header {
+  display: grid;
+  grid-template-columns: 50px 1fr 100px;
+  color: #b3b3b3;
+  border-bottom: 1px solid #ffffff1a;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+.track-item {
+  display: grid;
+  grid-template-columns: 50px 1fr 100px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  color: #b3b3b3;
+  cursor: pointer;
+  &:hover { background-color: #ffffff1a; 
+}
+}
+.surah-name { font-weight: 600;
+color: white; }
+
+
+
+.track-col.index {
+  .track-item:has(.now-playing-icon) & {
+    color: #37cd2d; 
+    
+  }
+}
+
+.now-playing-icon {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-sizing: border-box;
+
+  span {
+    width: 25%; 
+    height: 100%;
+    background: linear-gradient(135deg, #855cff, #1dff8b);    border-radius: 1px;
+    animation: bounce 1.2s ease-in-out infinite alternate;
+  }
+
+  span:nth-of-type(2) {
+    animation-delay: -1.0s;
+  }
+  span:nth-of-type(3) {
+    animation-delay: -0.8s;
+  }
+}
+
+@keyframes bounce {
+  100% {
+    transform: scaleY(0.3); 
+  }
+}
+
+.surah-name.active-track {
+  color: #37cd2d;
+     background: linear-gradient(180deg, #ad91ff, #1dff8b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff00; 
+}
+
+.see-more-button {
+  background: none;
+  border: none;
+  color: #898787;
+  font-family: inherit; 
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  padding: 16px 0; 
+  margin-left: 16px; 
+
+  &:hover {
+    color: #37cd2d;
+  }
+}
+
+
+.suggestions-section {
+  padding: 24px 40px;
+   padding-bottom: 110px; 
+}
+
+.suggestions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .show-all-button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px;
+}
+
+.suggestion-card {
+  background-color: #181818;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none; 
+
+  &:hover {
+    background-color: #282828;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-title {
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+}
+
+
+.tracks-header, .track-item {
+  grid-template-columns: 32px 1fr 48px 48px; 
+  gap: 16px;
+  align-items: center;
+}
+
+.track-col.like {
+  justify-content: center;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0; 
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  .liked-icon {
+    color: #1db954; 
+      background: -webkit-linear-gradient(135deg, #450af5, #c4efd9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff00;
+  }
+}
+
+.track-item:hover .like-button {
+  opacity: 1;
+}
+
+

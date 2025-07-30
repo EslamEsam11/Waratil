@@ -1,0 +1,128 @@
+:host {
+  --header-bg: #101010;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+  --profile-bg: #e1402e;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+ background: linear-gradient(to bottom, #3a2776, #0e0a18);
+  color: var(--text-primary);
+  height: 64px;
+  box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.logo  {
+  display: flex;
+  align-items: center;
+}
+.logo h2 {
+  margin: 0;
+  font-family: "Oi", serif;
+  font-weight: 400;
+}
+.navigation {
+  display: flex;
+  gap: 8px;
+  background-color: #242424;
+  border-radius: 50px;
+  padding: 4px;
+}
+
+.nav-button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease;
+
+  &.active, &:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #450af5, #c4efd9);
+  }
+
+  i {
+    font-size: 20px;
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.premium-button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.install-link {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.icon-button {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.profile-button {
+  background-color: var(--profile-bg);
+  color: var(--text-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}

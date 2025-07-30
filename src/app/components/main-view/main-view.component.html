@@ -1,0 +1,41 @@
+<app-top-bar></app-top-bar>
+
+
+<div class="content-area">
+  <div *ngIf="reciters$ | async as data; else loadingSkeleton">
+    <h2>{{ listTitle }}</h2>
+    <div *ngIf="data.reciters.length > 0; else noResults" class="content-grid">
+ <div *ngFor="let reciter of data.reciters"  class="content-card" 
+       [class.is-active]="isCurrentlyPlaying(reciter) | async"
+       (click)="onReciterClick(reciter)">
+    
+     <div class="card-image-container">
+      <img [src]="getReciterImage(reciter.id)" alt="Reciter Photo">
+      
+      <button class="play-button" (click)="togglePlayback(reciter, $event)">
+        <i class="fa-solid"
+           [class.fa-play]="!(isCurrentlyPlaying(reciter) | async)"
+           [class.fa-pause]="isCurrentlyPlaying(reciter) | async">
+        </i>
+      </button>
+    </div>
+
+    <div class="card-title">{{ getReciterName(reciter) }}</div>
+  </div>
+    </div>
+    <ng-template #noResults>
+      <p>لا توجد نتائج بحث مطابقة.</p>
+    </ng-template>
+  </div>
+
+  <ng-template #loadingSkeleton>
+    <div class="skeleton-header"></div>
+    <div class="content-grid">
+      <div *ngFor="let item of dummyArray" class="skeleton-card">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+    </div>
+  </ng-template>
+</div>

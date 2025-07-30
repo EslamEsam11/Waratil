@@ -1,0 +1,174 @@
+
+:host {
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --bg-highlight: #2a2a2a;
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 60px 32px 24px;
+}
+
+.header-icon {
+  width: 232px;
+  height: 232px;
+  min-width: 232px;
+  background: linear-gradient(135deg, #450af5, #c4efd9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  i {
+    font-size: 96px;
+    color: white;
+  }
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  .page-type {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .page-title {
+    font-size: 6rem;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -4px;
+     color: white;
+  }
+  .page-details {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+}
+
+.tracks-container {
+  padding: 24px 32px;
+      padding-bottom: 110px;
+}
+
+.tracks-header {
+  display: grid;
+  grid-template-columns: 32px 4fr 2fr 1fr; 
+  gap: 16px;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  .track-col {
+    padding-bottom: 8px;
+  }
+  .duration {
+    text-align: right;
+  }
+}
+
+.tracks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.track-item {
+  display: grid;
+  grid-template-columns: 32px 4fr 2fr 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 4px;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #ffffff1a;
+  }
+}
+
+.track-col {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+
+  &.index {
+    justify-content: center;
+  }
+
+  &.title {
+    color: var(--text-primary);
+    gap: 16px;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .track-info {
+      display: flex;
+      flex-direction: column;
+      .track-name {
+        font-weight: 600;
+      }
+      .artist-name {
+        font-size: 12px;
+        color: var(--text-secondary);
+      }
+    }
+  }
+
+  &.duration {
+    justify-content: flex-end;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.track-col.duration {
+  position: relative;
+  justify-content: flex-end; 
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 8px;
+
+  position: absolute;
+    left: 0;
+    z-index: 2; 
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.duration-text {
+  transition: opacity 0.2s ease;
+}
+
+.track-item:hover {
+  .delete-button {
+    opacity: 1; 
+  }
+  .duration-text {
+    opacity: 0; 
+  }
+}

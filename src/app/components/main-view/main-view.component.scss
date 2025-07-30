@@ -1,0 +1,142 @@
+.content-area {
+  padding: 16px 24px;
+    padding-bottom: 110px;
+}
+.content-area p{
+  color: white;
+}
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.content-card {
+  background-color: var(--card-color);
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover { background-color: #ffffff1a; }
+
+  img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 12px;
+        height: 100%;
+  }
+  .card-title {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+
+
+.content-card {
+  position: relative; 
+}
+
+.card-image-container {
+  position: relative; 
+    height: 150px;
+    overflow: hidden;
+ 
+}
+
+.play-button {
+    background: linear-gradient(135deg, #450af5, #c4efd9);  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+
+  position: absolute; 
+  bottom: 8px;
+  right: 8px;
+  
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+}
+
+.content-card:hover .play-button {
+  opacity: 1;
+  transform: translateY(0);
+}.content-card.is-active .play-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.play-button .fa-pause , .play-button .fa-play {
+    color: #ffffff;
+}
+
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.skeleton {
+  animation: shimmer 1.5s linear infinite;
+  background: linear-gradient(to right, #2c2c2c 8%, #3a3a3a 18%, #2c2c2c 33%);
+  background-size: 1000px 104px;
+  border-radius: 4px;
+}
+
+.skeleton-header {
+  @extend .skeleton; 
+  width: 250px;
+  height: 28px;
+  margin-bottom: 24px;
+}
+
+.skeleton-card {
+  background-color: #181818;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.skeleton-image {
+  @extend .skeleton;
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+.skeleton-line {
+  @extend .skeleton;
+  height: 12px;
+  margin-bottom: 8px;
+
+  &.short {
+    width: 60%; 
+  }
+}

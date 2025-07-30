@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+    height: 100%;
+  width: 100%;
+  overflow: hidden; 
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toast-top-right {
+bottom: 20%;
+    left: auto;
+    top: auto;
+}
+.toast-container .ngx-toastr {
+      background: linear-gradient(135deg, #450af5, #c4efd9);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
