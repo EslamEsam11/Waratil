@@ -26,7 +26,7 @@ export class MainViewComponent implements OnInit {
   public listTitle = 'أكثر القراء استماعاً';
 
   private mostListenedToIds: string[] = [
-    '123', '92', '102', '81', '51', '112', '86', '107', '20', '30', '231', '106', '263', '286', '70'
+    '123', '92', '102', '81', '51', '112', '86', '107', '20', '30', '231', '106', '263', '286', '245'
   ];
 
   ngOnInit(): void {
